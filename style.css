@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Lato', sans-serif;
-    background-color: #333;
+    background-color: #272727;
     color: #222;
     overflow-x: hidden;
     margin: 0;
@@ -23,27 +23,8 @@ body {
     align-items: center;
 }
 
-.btn {
-    background-color: #555;
-    color:#fafafa;
-    border-radius: 0;
-    border: 0;
-    padding: 15px 32px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-family: inherit;
-}
-
-.btn:hover {
-    opacity: 0.9;
-}
-  
-.btn:focus {
-    outline: none;
-}
-
 footer{
-    background-color: #333;
+    background-color: #272727;
     position: relative;
     height: 100px;
     margin-top: -100px;
@@ -61,9 +42,9 @@ footer{
 
 .socialIcons a{
     text-decoration: none;
-    padding: 10px;
+    padding: 5px;
     background-color: #fafafa;
-    margin: 30px;
+    margin: 15px;
     border-radius: 5%;
 }
 
@@ -93,8 +74,4 @@ img {
     max-width: 50%;
     margin-left: 5%;
     margin-bottom: 70px;
-}
-
-.btn {
-    margin-top: 30px;
 }
