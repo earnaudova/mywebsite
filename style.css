@@ -64,10 +64,30 @@ footer{
     transition: 0.5s;
 }
 
+.image-container {
+    max-width: 100%; 
+    margin-bottom: 50px; 
+}
+
 img {
-    max-width: 20%;
-    margin-right: 5%;
-    margin-bottom: 30px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+@media (min-width: 768px) {
+    .image-container {
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 767px) {
+    .image-container {
+        text-align: center;
+    }
 }
 
 .content {
