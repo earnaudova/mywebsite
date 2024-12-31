@@ -14,9 +14,10 @@ jobs:
 
       - name: Set up SSH Agent
         run: |
-          eval "$(ssh-agent -s)"                       # Start the SSH agent
-          echo "${{ secrets.DEPLOY_KEY }}" | tr -d '\r' | ssh-add - # Add the SSH private key
-          ssh-add -l                                   # List the added keys for debugging
+          eval "$(ssh-agent -s)"
+          echo "${{ secrets.DEPLOY_KEY }}" | tr -d '\r' | ssh-add -
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+          ssh-add -l
           echo "SSH key added successfully."
 
       - name: Verify SSH Connection
@@ -30,8 +31,6 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
-            eval "$(ssh-agent -s)"
-            ssh-add ~/.ssh/new_repo_key
             cd ~/public_html/
             git pull origin main
             echo "Deployment successful!"
