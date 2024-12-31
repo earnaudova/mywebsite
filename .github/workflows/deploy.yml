@@ -1,16 +1,8 @@
-# GitHub Actions Workflow for Deploying Website
-
 name: Deploy Website
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -22,11 +14,14 @@ jobs:
 
       - name: Set up SSH Agent
         run: |
-          eval "$(ssh-agent -s)"                      # Start SSH agent
-          ssh-add - <<< "${{ secrets.DEPLOY_KEY }}"   # Add private key
-        env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-          
+          eval "$(ssh-agent -s)"                       # Start the SSH agent
+          echo "${{ secrets.DEPLOY_KEY }}" | tr -d '\r' | ssh-add - # Add the SSH private key
+          ssh-add -l                                   # List the added keys for debugging
+          echo "SSH key added successfully."
+
+      - name: Verify SSH Connection
+        run: ssh -o StrictHostKeyChecking=no -T git@github.com || exit 1
+
       - name: Deploy to Namecheap Server
         uses: appleboy/ssh-action@v0.1.4
         with:
@@ -35,6 +30,8 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
+            eval "$(ssh-agent -s)"
+            ssh-add ~/.ssh/new_repo_key
             cd ~/public_html/
             git pull origin main
             echo "Deployment successful!"
