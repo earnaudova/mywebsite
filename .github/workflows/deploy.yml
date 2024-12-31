@@ -20,11 +20,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
+      - name: Set up SSH Agent
+        run: |
+          eval "$(ssh-agent -s)"                      # Start SSH agent
+          ssh-add - <<< "${{ secrets.DEPLOY_KEY }}"   # Add private key
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          
       - name: Deploy to Namecheap Server
         uses: appleboy/ssh-action@v0.1.4
         with:
