@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'About';
+const description = 'About my blog.';
+const permalink = `${Astro.site.href}about`;
+---
+
+<BaseLayout title={title} description={description} permalink={permalink} current="about">
+  <div class="container">
+    <h1>About</h1>
+    <figure class="about-image">
+      <img src="/assets/cutie.png" alt="That's me" width="500">
+    </figure>
+    <p>Hey! I’m Elena, a Software Engineer based in Zürich, Switzerland.</p>
+    <p>These days, I’m focused on Cloud Engineering: building cloud-native infrastructure, setting up CI/CD pipelines, and making systems observable and reliable. I started out in embedded systems, but at some point, I wanted to expand my domain of knowledge and explore new challenges. With a lot of studying and hands-on work, I transitioned into the cloud space and the deeper I went, the more my curiosity grew.</p>
+    <p>I currently work with tools like Terraform, GitLab, GCP, AWS, and Datadog, and I love creating scalable, well-monitored platforms. I’m also actively deepening my computer science foundations and working on my DSA skills, because I like a good challenge and I’m aiming high.</p>
+    <p>Outside of work, you’ll often find me cycling, doing yoga, or finding new ways to stay healthy and balanced.</p>
+    <p>Thanks for stopping by and feel free to reach out!</p>
+    <p>contact@elena-arnaudova.com</p>
+    <a href="https://x.com/arnaudova_elena" target="_blank">X-Twitter</a>
+    <a href="https://github.com/earnaudova" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/elena-arnaudova/" target="_blank">LinkedIn</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .about-image {
+    float: center;
+    max-width: 500px;
+  }
+
+  .about-image img {
+    border-radius: 8px;
+  }
+
+  @media (max-width: 1020px) {
+    .about-image {
+      float: none;
+    }
+  }
+</style>
