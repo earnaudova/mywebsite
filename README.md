@@ -1,29 +1,42 @@
-# [Astro](https://astro.build) Blog Template
+# My Personal Website
 
-[![Screenshot](screenshot.png)](https://astro-blog-template.netlify.app/)
+[![Screenshot](screenshot.png)](https://yourdomain.com)
 
-## 👉 Check out the ✨ [Live Demo](https://astro-blog-template.netlify.app/) ✨
+## 👉 Check out the ✨ [Live Demo](https://yourdomain.com) ✨
 
-## 👩‍🚀 Getting Started
+## 🎨 Theme Credit
 
-### Locally
+This website is built using the **Astro Blog Template** created by [Charca](https://github.com/charca).
 
-```
+### 🚀 Want to use this theme?
+
+You can get the original theme from Charca's repository:
+
+#### Locally
+
+```bash
 npm init astro -- --template Charca/astro-blog-template
 ```
 
-### On StackBlitz
+#### On StackBlitz
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/charca/astro-blog-template)
 
+#### Original Repository
+
+Visit the original theme: [Charca/astro-blog-template](https://github.com/charca/astro-blog-template)
+
 ## ✨ Features:
 
-- ✅ Astro 4.0
-- ✅ Dark Mode
+- ✅ Astro 5.5.2
+- ✅ Dark Mode with theme toggle
 - ✅ Full Markdown support
 - ✅ SEO-friendly setup with canonical URLs and OpenGraph data
 - ✅ RSS 2.0 generation
 - ✅ Sitemap.xml generation
+- ✅ Blog with reading time
+- ✅ Responsive design
+- ✅ GitHub Actions deployment workflow
 
 ## 🚀 Project Structure
 
@@ -32,21 +45,36 @@ Inside of your Astro project, you'll see the following folders and files:
 ```
 /
 ├── public/
+│   ├── assets/
+│   │   ├── blog/
+│   │   └── fonts/
 │   ├── robots.txt
 │   └── favicon.ico
 ├── src/
 │   ├── components/
-│   │   └── Tour.astro
-│   └── pages/
-│       └── index.astro
+│   │   ├── BaseHead.astro
+│   │   ├── Bio.astro
+│   │   ├── Footer.astro
+│   │   ├── Header.astro
+│   │   ├── Logo.astro
+│   │   ├── Nav.astro
+│   │   └── ThemeToggleButton.svelte
+│   ├── data/
+│   │   └── blog-posts/
+│   ├── layouts/
+│   │   └── BaseLayout.astro
+│   ├── pages/
+│   │   ├── about.astro
+│   │   ├── blog/
+│   │   └── index.astro
+│   └── styles/
+│       ├── fonts.css
+│       └── global.css
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
 └── package.json
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
@@ -55,10 +83,28 @@ All commands are run from the root of the project, from a terminal:
 | Command           | Action                                       |
 | :---------------- | :------------------------------------------- |
 | `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:3030`  |
+| `npm run dev`     | Starts local dev server at `localhost:4321`  |
 | `npm run build`   | Build your production site to `./dist/`      |
 | `npm run preview` | Preview your build locally, before deploying |
 
+## 🚀 Deployment
+
+This project includes a GitHub Actions workflow for automatic deployment. The workflow:
+
+1. Builds the Astro project
+2. Deploys via SCP to your server
+3. Requires the following secrets:
+   - `DEPLOY_KEY`: SSH private key
+   - `SERVER_HOST`: Your server hostname
+   - `SERVER_USERNAME`: SSH username
+   - `SERVER_PORT`: SSH port (usually 22)
+
 ## 👀 Want to learn more?
 
-Feel free to check [Astro's documentation](https://github.com/withastro/astro) or jump into Astro's [Discord server](https://astro.build/chat).
+- [Astro's documentation](https://docs.astro.build/)
+- [Original theme repository](https://github.com/charca/astro-blog-template)
+- [Astro's Discord server](https://astro.build/chat)
+
+---
+
+**Note**: This is a customized version of Charca's Astro Blog Template. For the original theme, please visit [Charca/astro-blog-template](https://github.com/charca/astro-blog-template).
