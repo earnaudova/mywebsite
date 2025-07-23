@@ -38,7 +38,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           port: ${{ secrets.SERVER_PORT }}
           key: ${{ secrets.DEPLOY_KEY }}
-          source: "dist/*"
+          source: "dist/"
           target: "public_html/"
 
       - name: Post-deploy confirmation
