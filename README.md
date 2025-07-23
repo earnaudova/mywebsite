@@ -1,16 +1,12 @@
 # My Personal Website
 
-[![Screenshot](screenshot.png)](https://yourdomain.com)
-
-## 👉 Check out the ✨ [Live Demo](https://yourdomain.com) ✨
-
 ## 🎨 Theme Credit
 
 This website is built using the **Astro Blog Template** created by [Charca](https://github.com/charca).
 
 ### 🚀 Want to use this theme?
 
-You can get the original theme from Charca's repository:
+You can get the original theme from Charca's repository: [astro-blog-template](https://github.com/Charca/astro-blog-template)
 
 #### Locally
 
@@ -83,21 +79,9 @@ All commands are run from the root of the project, from a terminal:
 | Command           | Action                                       |
 | :---------------- | :------------------------------------------- |
 | `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:4321`  |
+| `npm run dev`     | Starts local dev server at `localhost:3030`  |
 | `npm run build`   | Build your production site to `./dist/`      |
 | `npm run preview` | Preview your build locally, before deploying |
-
-## 🚀 Deployment
-
-This project includes a GitHub Actions workflow for automatic deployment. The workflow:
-
-1. Builds the Astro project
-2. Deploys via SCP to your server
-3. Requires the following secrets:
-   - `DEPLOY_KEY`: SSH private key
-   - `SERVER_HOST`: Your server hostname
-   - `SERVER_USERNAME`: SSH username
-   - `SERVER_PORT`: SSH port (usually 22)
 
 ## 👀 Want to learn more?
 
