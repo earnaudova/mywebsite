@@ -1,0 +1,52 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Astro Project
+        run: npm run build
+
+      - name: Set up SSH Agent
+        run: |
+          eval "$(ssh-agent -s)"
+          echo "${{ secrets.DEPLOY_KEY }}" | tr -d '\r' | ssh-add -
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Upload dist/ via SCP
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          port: ${{ secrets.SERVER_PORT }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          source: "dist/*"
+          target: "public_html/"
+
+      - name: Post-deploy confirmation
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          port: ${{ secrets.SERVER_PORT }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          script: |
+            echo "Deployment to public_html complete!"
