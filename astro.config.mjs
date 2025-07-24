@@ -7,7 +7,7 @@ import rehypeExternalLinks from 'rehype-external-links'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://yourdomain.com', // Update this with your actual domain
+  site: 'https://elena-arnaudova.com',
   integrations: [mdx(), svelte()],
   markdown: {
     shikiConfig: {
